@@ -1,0 +1,26 @@
+{% extends "trucho_app/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="contenedorFormulario">
+    
+    {% if request.GET.valido == "True" %}
+        <p style="color: white;">Información enviada correctamente, ¡Gracias!</p>
+    {% elif request.GET.valido == "False" %}
+        <p style="color: red;">Hubo un error al enviar la información. Por favor, inténtalo de nuevo.</p>
+    {% endif %}
+
+
+    <form action="" method="POST" style="text-align: center;">
+        {% csrf_token %}
+        <table style="color: white; margin: 20px auto;">
+            {{ formulario.as_table }}
+        </table>
+        <input type="submit" value="Enviar" style="width: 150px;">
+    </form>
+</div>
+{% endblock %}
+
+

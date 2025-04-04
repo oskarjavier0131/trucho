@@ -1,0 +1,30 @@
+{% extends "trucho_app/base.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Registro{% endblock %}
+{% block content %}
+
+<form method="post" action="">
+
+    {% csrf_token %}
+
+    <div style="width: 25%; margin: auto;">
+
+    {% if messages %}
+        {% for message in messages %}
+        <span class="alert alert = {{ message.tags }}"> {{ message }} </span>
+        {% endfor %}
+    {% endif %}
+
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-success">Login</button>
+
+    </div>
+
+</form>
+ 
+{% endblock %}
