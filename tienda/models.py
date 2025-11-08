@@ -3,8 +3,8 @@ from django.db import models
 class CategoriaProd(models.Model):
 
     nombre = models.CharField(max_length=50)
-    created = models.DateField(auto_now_add=True)
-    update = models.DateField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "categoriaProd"
@@ -16,12 +16,12 @@ class CategoriaProd(models.Model):
 class Producto(models.Model):
 
     nombre = models.CharField(max_length=50)
-    categorias = models.ForeignKey(CategoriaProd, on_delete= models.CASCADE)
+    categorias = models.ForeignKey(CategoriaProd, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="tienda", null=True, blank=True)
-    precio =models.FloatField()
-    disponibilidad =  models.BooleanField(default=True)
-    created = models.DateField(auto_now_add=True)
-    update = models.DateField(auto_now_add=True)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    disponibilidad = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "producto"
